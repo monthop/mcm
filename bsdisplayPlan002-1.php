@@ -53,6 +53,7 @@
 						<th>Sequence</th>
 						<th>Start</th>
 						<th>Run</th>
+						<th>Break</th>
 						<th>Stop</th>
 						<th>ProducedQty</th>
 						<th>CT</th>
@@ -67,7 +68,7 @@
 							include("bsconnect.php"); 
 							//declare variables
 							$ID = $McNo = $ItemNo = $LotNo = "";
-							$PlannedQty = $Status = $StartDateTime = $RunDateTime = $StopDateTime = $ProducedQty = "";
+							$PlannedQty = $Status = $StartDateTime = $RunDateTime = $StopDateTime = $ProducedQty = $BreakdownDateTime = "";
 							$AQty = $AvTime = $CycleTime = $TotalDefect = "";
 
 							$sql = "SELECT * FROM mcmonitoring.plandata WHERE McNo = 'MC-002' ORDER BY ID DESC;";
@@ -87,6 +88,7 @@
 									echo "<td>".$row['Sequence']."</td>";
 									echo "<td>".$row['StartDateTime']."</td>";
 									echo "<td>".$row['RunDateTime']."</td>";
+									echo "<td>".$row['BreakdownDateTime']."</td>";
 									echo "<td>".$row['StopDateTime']."</td>";
 									echo "<td>".$row['ProducedQty']."</td>";
 									echo "<td>".$row['AQty']."</td>";

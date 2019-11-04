@@ -58,7 +58,7 @@
   <h3>ร่วมมือกับ</h3>
 </div>
 <div class="container-fluid bg-1 text-center">
-  <img src="/phpto/kmutnb.png" alt="TGI" width="350" height="350">
+  <img src="/photo/kmutnb.png" alt="TGI" width="350" height="350">
 </div>
 <br>
 <footer class="container-fluid text-center">

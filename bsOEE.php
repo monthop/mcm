@@ -54,7 +54,6 @@
 						<th>Sequence</th>
 						<th>Start</th>
 						<th>Run</th>
-						<th>Break</th>
 						<th>Stop</th>
 						<th>ProducedQty</th>
 						<th>CT</th>
@@ -65,19 +64,44 @@
 						</thead>
         
 						<tbody>
-							<?php
+
+
+						<?php
 							include("bsconnect.php"); 
 							//declare variables
 							$ID = $McNo = $ItemNo = $LotNo = "";
-							$PlannedQty = $Status = $StartDateTime = $RunDateTime = $StopDateTime = $ProducedQty = $BreakdownDateTime = "";
+							$PlannedQty = $Status = $StartDateTime = $RunDateTime = $StopDateTime = $ProducedQty = "";
 							$AQty = $AvTime = $CycleTime = $TotalDefect = "";
+							$time = "";
 
-							$sql = "SELECT * FROM mcmonitoring.plandata WHERE McNo = 'MC-001' ORDER BY ID DESC;";
+							$ID = $_POST["ID"];
+							$McNo = $_POST["McNo"];
+							$McNoStr = '"'.$McNo.'"';
+							
+							$sql = "SELECT * FROM mcmonitoring.plandata WHERE ID = $ID and McNo = $McNoStr;";
 							$result = $conn->query($sql);
 
 							if ($result->num_rows > 0) {
 								while($row = mysqli_fetch_array($result))
 								{
+									$time = $row['timestamp'];
+									$McNo = $row['McNo'];
+									$LotNo = $row['LotNo'];
+									$ItemNo = $row['ItemNo'];
+									$PlannedQty = $row['PlannedQty'];
+									$Status = $row['Status'];
+									$ProducedQty = $row['ProducedQty'];
+
+									$sequence = $row['Sequence'];
+									$StartTime = $row['StartDateTime'];
+									$RunTime = $row['RunDateTime'];
+									$StopTime = $row['StopDateTime'];
+
+									$AQty = $row['AQty'];
+									$AvTime = $row['AvTime'];
+									$CT = $row['CycleTime'];
+									$Defect = $row['TotalDefect'];
+									//echo "Data received";
 									echo "<tr>";
 									echo "<td>".$row['ID']."</td>";
 									echo "<td>".$row['timestamp']."</td>";
@@ -89,7 +113,6 @@
 									echo "<td>".$row['Sequence']."</td>";
 									echo "<td>".$row['StartDateTime']."</td>";
 									echo "<td>".$row['RunDateTime']."</td>";
-									echo "<td>".$row['BreakdownDateTime']."</td>";
 									echo "<td>".$row['StopDateTime']."</td>";
 									echo "<td>".$row['ProducedQty']."</td>";
 									echo "<td>".$row['AQty']."</td>";
@@ -99,10 +122,13 @@
 									echo "</tr>";
 								}
 							} else {
-								//echo "0 results";
-							} 
+								echo "0 results";
+							}
+						//oee calculation
+							
+													
 							$conn->close();
-							?> 
+						?> 
 						</tbody>
 					</table>
 					</div>
@@ -114,7 +140,7 @@
 	<div class='container'>
 		<!-- Button to Open the Modal -->
 	  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
-		Insert Production Plan
+		Print OEE
 	  </button>
 
 	  <!-- The Modal -->
@@ -124,14 +150,14 @@
 		  
 			<!-- Modal Header -->
 			<div class="modal-header">
-			  <h4 class="modal-title"><b>ใส่แผนการผลิต</b></h4>
+			  <h4 class="modal-title"><b>เลือกแผนสำหรับคำนวณ OEE</b></h4>
 			  <button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			
 			<!-- Modal body -->
 			<div class="modal-body">
 
-				<form method="post" action="bsinsertPlandata001.php">  
+				<form method="post" action="bsOEE.php">  
 				
 					<label for="McNo">หมายเลขเครื่อง:</label>
 					<select name="McNo" class="form-control" >
@@ -142,37 +168,9 @@
 					</select>
 					
 					<div class="form-group">
-						<label for="LotNo">Lot No.:</label>
-						<input type="text" class="form-control" id="LotNo" placeholder="เลขล็อต หรือ เลขขคำสั่งซื้อ" name="LotNo">
+						<label for="ID">ID No.:</label>
+						<input type="text" class="form-control" id="ID" placeholder="หมายเลข ID" name="ID">
 					</div>
-					<div class="form-group">
-						<label for="ItemNo">Part No.:</label>
-						<input type="text" class="form-control" id="ItemNo" placeholder="รหัสสินค้า/ชิ้นส่วน" name="ItemNo">
-					</div>
-					<div class="form-group">
-						<label for="PlannedQty">Planned Qty:</label>
-						<input type="text" class="form-control" id="PlannedQty" placeholder="จำนวนสั่งผลิต" name="PlannedQty">
-					</div>
-					<div class="form-group">
-						<label for="Sequence">Sequence No:</label>
-						<input type="text" class="form-control" id="Sequence" placeholder="ลำดับการผลิต" name="Sequence">
-					</div>
-					<div class="form-group">
-						<label for="AvTime">Available Time (Hr):</label>
-						<input type="text" class="form-control" id="AvTime" placeholder="จำนวนชม.การทำงานของเครื่อง" name="AvTime">
-					</div>
-					<div class="form-group">
-						<label for="CycleTime">Ideal Cycle Time (Sec.):</label>
-						<input type="text" class="form-control" id="CycleTime" placeholder="เวลาที่ใช้ผลิต(วินาที)ต่อชิ้น" name="CycleTime">
-					</div>
-					<label for="Status">Status:</label>
-					<select name="Status" class="form-control" >
-					  <option selected>สถานะการผลิต</option>
-					  <option value="0">ยังไม่ผลิต</option>
-					  <option value="1">เปิดเครื่อง</option>
-					  <option value="2">กำลังผลิต</option>
-					  <option value="3">ผลิตเสร็จ</option>
-					</select>
 				  <br>
 				  <input type="submit" name="submit" class = "submit-button" value="Submit">  
 				</form>
@@ -185,14 +183,9 @@
 		</div>
 	  </div>
 
-	<a href="/bssequence1.php" class="btn btn-warning" role="button">Edit Sequence, Planned Qty</a>
-	<a href="/bssequenceDefect1.php" class="btn btn-info" role="button">Enter Defect</a>
-	<a href="/bsdeleteSelect1.php" class="btn btn-success" role="button">Delete Record</a>
-	<a href="/bseditor.php" class="btn btn-info" role="button">Go Back</a>
+	<a href="/bsexportOEE.php" class="btn btn-warning" role="button">Export OEE File</a>
+	<a href="/bscalOEE-001.php" class="btn btn-info" role="button">Go Back</a>
 </div>
 
 </body>
 </html>
-
-
-

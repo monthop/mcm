@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
       <label for="ToID">To ID no.:</label>
-      <input type="text" class="form-control" id="ToID" placeholder="Enter Sequence No." name="ToID">
+      <input type="text" class="form-control" id="ToID" placeholder="Enter ID No." name="ToID">
     </div>
     <button type="submit" class="btn btn-info">Submit</button>
   </form>

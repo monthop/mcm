@@ -1,6 +1,6 @@
 <?php
 	include("connectArduinoMc.php");
-
+	
 	$LotNo = $_POST["LotNo"];
 	$ItemNo = $_POST["ItemNo"];
 	$McNo = $_POST["McNo"];

@@ -27,10 +27,9 @@
 include("bsconnect.php");
 
 //show value
-$ID = $_GET['ID'];
-$newSequence = $_GET['Sequence'];
-$newQty = $_GET['PlannedQty'];
+$LotNo = $_GET['LotNo'];
 $defect = $_GET['Defect'];
+$LotNoStr = '"'.$LotNo.'"';
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);
 // Check connection
@@ -39,7 +38,7 @@ if ($conn->connect_error) {
 } 
 
 // sql to delete a record
-$sql = "UPDATE mcmonitoring.plandata SET Sequence = $newSequence, PlannedQty = $newQty, TotalDefect = $defect WHERE ID = $ID;";
+$sql = "UPDATE mcmonitoring.plandata SET TotalDefect = $defect WHERE LotNo = $LotNoStr;";
 
 if ($conn->query($sql) === TRUE) {
 	okForm();

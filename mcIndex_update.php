@@ -25,7 +25,7 @@
 	
 	$sql = "UPDATE mcmonitoring.updatedata SET timestamp = CURRENT_TIMESTAMP, LotNo = $LotNoStr, ItemNo = $ItemNoStr,
 	StartTime = $StartTimeStr, RunTime = $RunTimeStr, BreakTime = $BreakTimeStr, StopTime = $StopTimeStr,
-	TotalQty = $TotalQtyStr,Qty = $QtyStr WHERE McNo = 'MC-001';"; 
+	TotalQty = $TotalQtyStr,Qty = $QtyStr WHERE McNo = $McNo;"; 
 	
 	if ($conn->query($sql) === TRUE) {
 		echo "New record created successfully";

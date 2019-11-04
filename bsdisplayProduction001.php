@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>BMcPlan Tab</title>
   <meta charset="utf-8">
@@ -50,6 +51,7 @@
 						<th>ItemNo</th>
 						<th>StartTime</th>
 						<th>RunTime</th>
+						<th>BreakdownTime</th>
 						<th>StopTime</th>
 						<th>TotalQty</th>
 						<th>TotalDefect</th>
@@ -62,7 +64,7 @@
 							include("bsconnect.php"); 
 							//declare variables
 							$ID = $McNo = $ItemNo = $LotNo = "";
-							$PlannedQty = $Status = $StartDateTime = $RunDateTime = $StopDateTime = $ProducedQty = "";
+							$PlannedQty = $Status = $StartDateTime = $RunDateTime = $StopDateTime = $ProducedQty = $BreakTime = "";
 							$AQty = $AvTime = $CycleTime = $TotalDefect = "";
 
 							$sql = "SELECT * FROM mcmonitoring.productiondata WHERE McNo = 'MC-001' ORDER BY ID DESC;";
@@ -79,6 +81,7 @@
 									echo "<td>".$row['ItemNo']."</td>";
 									echo "<td>".$row['StartTime']."</td>";
 									echo "<td>".$row['RunTime']."</td>";
+									echo "<td>".$row['BreakTime']."</td>";
 									echo "<td>".$row['StopTime']."</td>";
 									echo "<td>".$row['TotalQty']."</td>";
 									echo "<td>".$row['TotalDefect']."</td>";

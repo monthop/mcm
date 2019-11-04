@@ -3,6 +3,8 @@
 include("connectSurat.php");
 
 $temp = $humidity = " ";
+$dayNumber = $ovenID = $relayStatus = $hrelayStatus = $setHumi = $setTemp = "";
+$system = $mode = "";
 
 //show all parameters
 echo "Data to mySQL","<br/>";
