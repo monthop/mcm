@@ -17,22 +17,15 @@
     cursor: pointer;
 }
 </style>
-<?php
+ <?php 
 
-error_reporting(0);
-
-function dataForm() {
+ function dataForm() {
     //echo "goto data form";
-    //header("Location: /bseditor.php");
-echo '
-<form action="/bseditor.php">
-  <input type="submit" class = "button" name="GoBSeditor" value= "GoBSeditor" > 
-</form>
-';
+	header("Location: /bseditor.php");
 }
 function goBack(){
     //echo "goto data form";
-    header("Location: /bsmenu.php");
+	header("Location: /bsmenu.php");
 }
 
 include("bsconnect.php"); 

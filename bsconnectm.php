@@ -1,6 +1,6 @@
 <?php
-$servername = "db";
-$username = "admin";
+$servername = "localhost";
+$username = "root";
 $password = "admin@2019";
 $db="mcmonitoring2";
 
