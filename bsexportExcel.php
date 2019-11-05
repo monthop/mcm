@@ -4,7 +4,7 @@ $McNo = "";
 $beginDate = "";
 $endDate = "";
 //Change the password to match your configuration
-  $link = mysqli_connect("localhost", "root", "admin@2019", "mcmonitoring");
+  $link = mysqli_connect("db", "admin", "admin@2019", "mcmonitoring");
   // Check connection
   if($link === false){
       die("ERROR: Could not connect. " . mysqli_connect_error());
