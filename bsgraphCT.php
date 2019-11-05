@@ -44,7 +44,7 @@
         <li><a href="/bsmenu.php">Home</a></li>
 		<li><a href="/bseditor.php">Operation</a></li>
 		<li><a href="/bsabout.php">About</a></li>
-        <li class="active" ><a href="http://monthop:8080/?orgId=1" target="_blank">Grafana</a></li>
+        <li class="active" ><a href="http://localhost:8080/?orgId=1" target="_blank">Grafana</a></li>
         <li class="dropdown">
 		    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Gallery
 			<span class="caret"></span></a>
@@ -82,7 +82,7 @@
 		<div class="col-md-7">
 		  <p>MC-001</p>
 			<div class="embed-responsive embed-responsive-16by9">
-					<iframe src="http://monthop:3000/d-solo/INbrNT_mz/cycletime?orgId=1&from=1546923105480&to=1548522786752&panelId=2"
+					<iframe src="http://localhost:3000/d-solo/INbrNT_mz/cycletime?orgId=1&from=1546923105480&to=1548522786752&panelId=2"
 					width="450" height="200" frameborder="1" ></iframe>
 			</div>
 		</div>
@@ -92,7 +92,7 @@
 		<div class="col-md-7">
 		  <p>MC-002</p>
 			<div class="embed-responsive embed-responsive-16by9">
-					<iframe src="http://monthop:3000/d-solo/INbrNT_mz/cycletime?orgId=1&from=1546923105480&to=1548522786752&panelId=3"					
+					<iframe src="http://localhost:3000/d-solo/INbrNT_mz/cycletime?orgId=1&from=1546923105480&to=1548522786752&panelId=3"					
 					width="450" height="200" frameborder="1" ></iframe>
 			</div>
 		</div>
@@ -102,7 +102,7 @@
 		<div class="col-md-7">
 		  <p>MC-003</p>
 			<div class="embed-responsive embed-responsive-16by9">
-					<iframe src="http://monthop:3000/d-solo/INbrNT_mz/cycletime?orgId=1&from=1546923105480&to=1548522786752&panelId=4"
+					<iframe src="http://localhost:3000/d-solo/INbrNT_mz/cycletime?orgId=1&from=1546923105480&to=1548522786752&panelId=4"
 					width="450" height="200" frameborder="1" ></iframe>
 			</div>
 		</div>

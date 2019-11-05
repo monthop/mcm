@@ -12,6 +12,7 @@
 	$TotalDefect = $_POST["TotalDefect"]; 
 	$Qty = $_POST["Qty"];
 	
+	
 	$StartTimeStr = "'".$StartTime."'";
 	$RunTimeStr = "'".$RunTime."'";
 	$BreakTimeStr = "'".$BreakTime."'";
@@ -32,6 +33,15 @@
 	} else {
 		echo "Error: " . $sql . "<br>" . $conn->error;
 	}
+	
+	$sql = "UPDATE mcmonitoring.plandata SET Status = $Status WHERE LotNo = $LotNo;"; 
+	
+	if ($conn->query($sql) === TRUE) {
+		echo "update plandata to Sch Break successfully";
+	} else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+	
 
 	$conn->close();
 

@@ -25,7 +25,7 @@
       <ul class="nav navbar-nav">
         <li><a href="/bsmenum.php">Home</a></li>
 		<li><a href="/bsaboutm.php">About</a></li>
-        <li class="active" ><a href="http://monthop:8080/?orgId=1" target="_blank">Goto Grafana</a></li>
+        <li class="active" ><a href="http://localhost:8080/?orgId=1" target="_blank">Goto Grafana</a></li>
         <li class="dropdown">
 		    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Gallery
 			<span class="caret"></span></a>
